@@ -13,6 +13,8 @@ import { useRevealGroup } from '../hooks/useRevealGroup'
 import { usePageTitle } from '../hooks/usePageTitle'
 import styles from './Contact.module.css'
 
+const contactEmail = 'info@rememberwhenpb.com'
+
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 export function Contact({ settings }: { settings: SiteSettings }) {
@@ -46,7 +48,7 @@ export function Contact({ settings }: { settings: SiteSettings }) {
       setStatus('sent')
     } catch {
       /* Never swallow it: hand the visitor a way to reach the inbox anyway. */
-      setFallback(buildInquiryMailto(settings.email, fields))
+      setFallback(buildInquiryMailto(contactEmail, fields))
       setStatus('error')
     }
   }
@@ -86,10 +88,10 @@ export function Contact({ settings }: { settings: SiteSettings }) {
                 </span>
               </a>
 
-              <a href={`mailto:${settings.email}`} className={styles.channel}>
+              <a href={`mailto:${contactEmail}`} className={styles.channel}>
                 <span className={styles.channelText}>
                   <span className={styles.channelLabel}>EMAIL</span>
-                  <span className={styles.channelEmail}>{settings.email}</span>
+                  <span className={styles.channelEmail}>{contactEmail}</span>
                 </span>
                 <span className={styles.channelArrow} aria-hidden="true">
                   →
